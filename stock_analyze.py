@@ -10,13 +10,13 @@ tickers = ["MSFT", "GOOGL", "AAPL"]
 end_date = datetime.now()
 start_date = datetime.now() + relativedelta(months=-3)
 
+# get the stock data in the past 3 month
 df_list = []
 for ticker in tickers:
     data = yf.download(ticker, start=start_date, end=end_date)
     df_list.append(data)
 
 df = pd.concat(df_list, keys=tickers, names=['Ticker', 'Date'])
-
 df = df.reset_index()
 
 print(df.head(10))
