@@ -1,12 +1,12 @@
-import yfinance as yf
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
 import pandas as pd
+import yfinance as yf
 
-msft = yf.Ticker("MSFT")
+# the stocks tickers for analysis
+tickers = ["MSFT", "GOOGL", "AAPL"]
 
-# get all stock info
-info = msft.info
-# print(info)
+# Get the start and end dates of 3 month time frame
+end_date = datetime.now()
+start_date = datetime.now() + relativedelta(months=-3)
 
-# get historical market data
-hist = msft.history(period="1mo")
-print(hist)
